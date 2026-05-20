@@ -1,0 +1,61 @@
+{
+    "name": "token27/nexus-ai-tokenizer",
+    "description": "Provider-agnostic LLM token counter for PHP 8.3+. Supports Tiktoken BPE (OpenAI, Claude approx.), HuggingFace JSON vocabularies (DeepSeek, LLaMA, Mistral), SentencePiece (Gemini), and extensible custom strategies.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "tokenizer",
+        "llm",
+        "tiktoken",
+        "bpe",
+        "openai",
+        "anthropic",
+        "gemini",
+        "deepseek",
+        "token-counting",
+        "huggingface",
+        "sentencepiece"
+    ],
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "danny50610/bpe-tokeniser": "^0.3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "suggest": {
+        "textualization/sentencepiece": "Exact SentencePiece tokenization for Gemini, LLaMA-2, Mistral. Requires PHP FFI extension + libsentencepiece system library (sudo apt install libsentencepiece-dev)."
+    },
+    "autoload": {
+        "psr-4": {
+            "Token27\\Tokenizer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Token27\\Tokenizer\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite Unit",
+        "test:integration": "phpunit --testsuite Integration",
+        "test:coverage": "phpunit --coverage-text",
+        "lint": "php-cs-fixer fix --dry-run --diff",
+        "lint-fix": "php-cs-fixer fix",
+        "analyse": "phpstan analyse --level=8 src/",
+        "check": [
+            "@lint",
+            "@analyse",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
